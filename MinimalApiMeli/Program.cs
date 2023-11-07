@@ -4,7 +4,9 @@ using MinimalApiMeli.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<TablesDB>(opt => opt.UseInMemoryDatabase("category")
-                                                    .UseInMemoryDatabase("provider"));
+                                                    .UseInMemoryDatabase("provider")
+                                                    .UseInMemoryDatabase("carts"));
+
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 var app = builder.Build();
 
@@ -82,6 +84,50 @@ app.MapDelete("/provider/{id}", async (int id, TablesDB db) =>
     if (await db.providers.FindAsync(id) is Provider entity)
     {
         db.providers.Remove(entity);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+});
+#endregion
+
+#region Cart
+app.MapGet("/Cart", async (TablesDB db) =>
+    await db.carts.ToListAsync());
+
+app.MapGet("/Cart/{id}", async (int id, TablesDB db) =>
+    await db.carts.Where(x => x.id == id).ToListAsync());
+
+app.MapPost("/Cart", async (Carts cart, TablesDB db) =>
+{
+    db.carts.Add(cart);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/Cart/{cart.id}", cart);
+});
+
+app.MapPut("/Cart/{id}", async (int id, Carts inputEntity, TablesDB db) =>
+{
+    var cart = await db.carts.FindAsync(id);
+
+    if (cart is null) return Results.NotFound();
+
+    // MODIFY
+    cart.user = inputEntity.user;
+    cart.product = inputEntity.product;
+    cart.lastModify = inputEntity.lastModify;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+app.MapDelete("/Cart/{id}", async (int id, TablesDB db) =>
+{
+    if (await db.carts.FindAsync(id) is Carts cart)
+    {
+        db.carts.Remove(cart);
         await db.SaveChangesAsync();
         return Results.NoContent();
     }

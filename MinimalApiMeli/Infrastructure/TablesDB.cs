@@ -11,4 +11,5 @@ public class TablesDB : DbContext
 
     public DbSet<Provider> providers => base.Set<Provider>();
     public DbSet<Category> categories => base.Set<Category>();
+    public DbSet<Carts> carts => base.Set<Carts>();
 }
