@@ -75,6 +75,8 @@ app.MapPut("/products/{id}", async (int id, Products inputEntity, TablesDB db) =
     entity.description = inputEntity.description;
     entity.price = inputEntity.price;
     entity.quantity = inputEntity.quantity;
+    entity.categoryId = inputEntity.categoryId;
+    entity.providerId = inputEntity.providerId;
 
     await db.SaveChangesAsync();
 
