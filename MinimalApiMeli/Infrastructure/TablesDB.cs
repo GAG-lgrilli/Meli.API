@@ -9,6 +9,7 @@ public class TablesDB : DbContext
    : base(options) { }
 
 
+    public DbSet<Products> products => base.Set<Products>();
     public DbSet<Provider> providers => base.Set<Provider>();
     public DbSet<Category> categories => base.Set<Category>();
 }
