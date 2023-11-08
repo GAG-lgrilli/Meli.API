@@ -1,12 +1,11 @@
-using MELI_API.Infraestructura;
 using Microsoft.EntityFrameworkCore;
 using MinimalApiMeli.Entities;
 using MinimalApiMeli.Infrastructure;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
-string conn = "Server=172.0.0.14;Database=SEIB;user=TestUser;Password=Test2023!;Encrypt=true;TrustServerCertificate=True";
-builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(conn));
+//string conn = "Server=172.0.0.14;Database=SEIB;user=TestUser;Password=Test2023!;Encrypt=true;TrustServerCertificate=True";
+//builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(conn));
 builder.Services.AddDbContext<TablesDB>(opt => opt.UseInMemoryDatabase("category")
                                                     .UseInMemoryDatabase("products")
                                                     .UseInMemoryDatabase("provider")
