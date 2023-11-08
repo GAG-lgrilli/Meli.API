@@ -1163,23 +1163,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mcandia\\.nuget\\packages\\": {},
+    "C:\\Users\\MRuel\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mcandia\\source\\repos\\Cursos\\Angular\\Meli.API\\MinimalApiMeli\\MinimalApiMeli.csproj",
+      "projectUniqueName": "C:\\Cursos\\Angular\\Meli.API\\MinimalApiMeli\\MinimalApiMeli.csproj",
       "projectName": "MinimalApiMeli",
-      "projectPath": "C:\\Users\\mcandia\\source\\repos\\Cursos\\Angular\\Meli.API\\MinimalApiMeli\\MinimalApiMeli.csproj",
-      "packagesPath": "C:\\Users\\mcandia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mcandia\\source\\repos\\Cursos\\Angular\\Meli.API\\MinimalApiMeli\\obj\\",
+      "projectPath": "C:\\Cursos\\Angular\\Meli.API\\MinimalApiMeli\\MinimalApiMeli.csproj",
+      "packagesPath": "C:\\Users\\MRuel\\.nuget\\packages\\",
+      "outputPath": "C:\\Cursos\\Angular\\Meli.API\\MinimalApiMeli\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\mcandia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\MRuel\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1188,8 +1188,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files (x86)\\Progress\\Telerik UI for ASP.NET Core R1 2022\\wrappers\\aspnetcore\\Binaries\\AspNet.Core": {},
-        "C:\\Program Files (x86)\\Progress\\Telerik UI for ASP.NET Core R3 2021\\wrappers\\aspnetcore\\Binaries\\AspNet.Core": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
@@ -1248,6 +1246,24 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[7.0.9, 7.0.9]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[7.0.9, 7.0.9]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[7.0.9, 7.0.9]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[7.0.9, 7.0.9]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

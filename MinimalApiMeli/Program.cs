@@ -145,4 +145,47 @@ app.MapDelete("/provider/{id}", async (int id, TablesDB db) =>
 });
 #endregion
 
+#region Users
+app.MapGet("/users", async (TablesDB db) =>
+    await db.users.ToListAsync());
+
+app.MapGet("/users/{id}", async (Guid id, TablesDB db) =>
+    await db.users.Where(x => x.id == id).ToListAsync());
+
+app.MapPost("/users", async (Users entity, TablesDB db) =>
+{
+    db.users.Add(entity);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/entity/{entity.id}", entity);
+});
+
+app.MapPut("/users/{id}", async (int id, Users inputEntity, TablesDB db) =>
+{
+    var entity = await db.users.FindAsync(id);
+
+    if (entity is null) return Results.NotFound();
+
+    entity.firstname = inputEntity.firstname;
+    entity.lastname = inputEntity.lastname;
+    entity.password = inputEntity.password;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+app.MapDelete("/users/{id}", async (int id, TablesDB db) =>
+{
+    if (await db.users.FindAsync(id) is Users entity)
+    {
+        db.users.Remove(entity);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+});
+#endregion
+
 app.Run();
