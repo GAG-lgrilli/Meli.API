@@ -1,12 +1,16 @@
+using MELI_API.Infraestructura;
 using Microsoft.EntityFrameworkCore;
 using MinimalApiMeli.Entities;
 using MinimalApiMeli.Infrastructure;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
+string conn = "Server=172.0.0.14;Database=SEIB;user=TestUser;Password=Test2023!;Encrypt=true;TrustServerCertificate=True";
+builder.Services.AddDbContext<AppDbContext>(o => o.UseSqlServer(conn));
 builder.Services.AddDbContext<TablesDB>(opt => opt.UseInMemoryDatabase("category")
+                                                    .UseInMemoryDatabase("products")
                                                     .UseInMemoryDatabase("provider")
                                                     .UseInMemoryDatabase("carts"));
-
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 var app = builder.Build();
 
@@ -43,6 +47,51 @@ app.MapDelete("/category/{id}", async (int id, TablesDB db) =>
     if (await db.categories.FindAsync(id) is Category category)
     {
         db.categories.Remove(category);
+        await db.SaveChangesAsync();
+        return Results.NoContent();
+    }
+
+    return Results.NotFound();
+});
+#endregion
+
+#region Products
+app.MapGet("/products", async (TablesDB db) =>
+    await db.products.ToListAsync());
+
+app.MapGet("/products/{id}", async (int id, TablesDB db) =>
+    await db.products.Where(x => x.id == id).ToListAsync());
+
+app.MapPost("/products", async (Products entity, TablesDB db) =>
+{
+    db.products.Add(entity);
+    await db.SaveChangesAsync();
+
+    return Results.Created($"/entity/{entity.id}", entity);
+});
+
+app.MapPut("/products/{id}", async (int id, Products inputEntity, TablesDB db) =>
+{
+    var entity = await db.products.FindAsync(id);
+
+    if (entity is null) return Results.NotFound();
+
+    entity.description = inputEntity.description;
+    entity.price = inputEntity.price;
+    entity.quantity = inputEntity.quantity;
+    entity.categoryId = inputEntity.categoryId;
+    entity.providerId = inputEntity.providerId;
+
+    await db.SaveChangesAsync();
+
+    return Results.NoContent();
+});
+
+app.MapDelete("/products/{id}", async (int id, TablesDB db) =>
+{
+    if (await db.products.FindAsync(id) is Products entity)
+    {
+        db.products.Remove(entity);
         await db.SaveChangesAsync();
         return Results.NoContent();
     }
