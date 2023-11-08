@@ -37,6 +37,7 @@ C:\Users\lgrilli\source\repos\MinimalApiMeli\MinimalApiMeli\bin\Debug\net7.0\Mic
 C:\Users\lgrilli\source\repos\MinimalApiMeli\MinimalApiMeli\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\lgrilli\source\repos\MinimalApiMeli\MinimalApiMeli\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.InMemory.dll
 C:\Users\lgrilli\source\repos\MinimalApiMeli\MinimalApiMeli\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+<<<<<<< HEAD
 C:\Users\mcandia\source\repos\Cursos\Angular\Meli.API\MinimalApiMeli\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\mcandia\source\repos\Cursos\Angular\Meli.API\MinimalApiMeli\bin\Debug\net7.0\appsettings.json
 C:\Users\mcandia\source\repos\Cursos\Angular\Meli.API\MinimalApiMeli\bin\Debug\net7.0\MinimalApiMeli.exe
@@ -116,3 +117,5 @@ C:\Cursos\Angular\Meli.API\MinimalApiMeli\obj\Debug\net7.0\refint\MinimalApiMeli
 C:\Cursos\Angular\Meli.API\MinimalApiMeli\obj\Debug\net7.0\MinimalApiMeli.pdb
 C:\Cursos\Angular\Meli.API\MinimalApiMeli\obj\Debug\net7.0\MinimalApiMeli.genruntimeconfig.cache
 C:\Cursos\Angular\Meli.API\MinimalApiMeli\obj\Debug\net7.0\ref\MinimalApiMeli.dll
+=======
+>>>>>>> 5966eb44570efe3b78a90106af42299f9b1dc74e
