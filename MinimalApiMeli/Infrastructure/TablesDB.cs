@@ -12,4 +12,5 @@ public class TablesDB : DbContext
     public DbSet<Products> products => base.Set<Products>();
     public DbSet<Provider> providers => base.Set<Provider>();
     public DbSet<Category> categories => base.Set<Category>();
+    public DbSet<Users> users => base.Set<Users>();
 }
