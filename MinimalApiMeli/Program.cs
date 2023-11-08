@@ -8,7 +8,15 @@ builder.Services.AddDbContext<TablesDB>(opt => opt.UseInMemoryDatabase("category
                                                     .UseInMemoryDatabase("products")
                                                     );
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddCors();
 var app = builder.Build();
+
+app.UseCors(builder => builder
+.AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader()
+);
 
 #region Category
 app.MapGet("/category", async (TablesDB db) =>
